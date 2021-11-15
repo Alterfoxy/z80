@@ -28,8 +28,8 @@ wire [ 9:0] y = (Y - vtb); // y=[0..399]
 // ---------------------------------------------------------------------
 
 reg  [ 3:0] color;
-wire [ 9:0] xr = x - 64 + 2;
-wire [ 9:0] yr = y - 8;
+wire [ 9:0] xr = X - hzb - 64 + 2;
+wire [ 9:0] yr = Y - vtb - 8;
 
 always @(posedge CLOCK) begin
 
@@ -40,7 +40,7 @@ always @(posedge CLOCK) begin
     case (xr[0])
         
         // 4000h - 9FFFh Видеопамять 
-        0: vaddr <= {2'b10, yr[7:1], xr[7:2]}; 
+        0: vaddr <= 16'h4000 + {/*8*/ yr[8:1], /*7*/xr[8:2]}; 
         1: color <= xr[1] ? vdata[3:0] : vdata[7:4];
         
     endcase
@@ -51,14 +51,26 @@ always @(posedge CLOCK) begin
     
         // Область экрана
         if (x >= 64 && x < 64 + 512 && y >= 8 && y < 8 + 384)
-            {VGA_R, VGA_G, VGA_B} <= 
-            color == 8 ? 12'h888 : // 8-й цвет серый
-            {
-                {color[3] & color[2], {3{color[2]}}}, // R
-                {color[3] & color[1], {3{color[1]}}}, // G
-                {color[3] & color[0], {3{color[0]}}}  // B
-            };
-                    
+        
+            case (color)
+                0:  {VGA_R, VGA_G, VGA_B} <= 12'h111;
+                1:  {VGA_R, VGA_G, VGA_B} <= 12'h008;
+                2:  {VGA_R, VGA_G, VGA_B} <= 12'h080;
+                3:  {VGA_R, VGA_G, VGA_B} <= 12'h088;
+                4:  {VGA_R, VGA_G, VGA_B} <= 12'h800;
+                5:  {VGA_R, VGA_G, VGA_B} <= 12'h808;
+                6:  {VGA_R, VGA_G, VGA_B} <= 12'h880;
+                7:  {VGA_R, VGA_G, VGA_B} <= 12'hccc;
+                8:  {VGA_R, VGA_G, VGA_B} <= 12'h888;
+                9:  {VGA_R, VGA_G, VGA_B} <= 12'h00f;
+                10: {VGA_R, VGA_G, VGA_B} <= 12'h0f0;
+                11: {VGA_R, VGA_G, VGA_B} <= 12'h0ff;
+                12: {VGA_R, VGA_G, VGA_B} <= 12'hf00;
+                13: {VGA_R, VGA_G, VGA_B} <= 12'hf0f;
+                14: {VGA_R, VGA_G, VGA_B} <= 12'hff0;
+                15: {VGA_R, VGA_G, VGA_B} <= 12'hfff;
+            endcase
+            
         else
             {VGA_R, VGA_G, VGA_B} <= border; // Бордер
          

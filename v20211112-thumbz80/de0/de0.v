@@ -135,7 +135,7 @@ zram UnitZram
 
 tz80 MicroprocessorUnit80 
 (
-    .clock      (clock),
+    .clock      (clock & 0),
     .resetn     (locked),
     .locked     (locked),
     .address    (address),
