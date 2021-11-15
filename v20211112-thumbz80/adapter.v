@@ -31,6 +31,25 @@ reg  [ 3:0] color;
 wire [ 9:0] xr = X - hzb - 64 + 2;
 wire [ 9:0] yr = Y - vtb - 8;
 
+// Итоговый цвет
+wire [11:0] dstcolor = 
+    color == 4'h0 ? 12'h111 :
+    color == 4'h1 ? 12'h008 :
+    color == 4'h2 ? 12'h080 :
+    color == 4'h3 ? 12'h088 :
+    color == 4'h4 ? 12'h800 :
+    color == 4'h5 ? 12'h808 :
+    color == 4'h6 ? 12'h880 :
+    color == 4'h7 ? 12'hccc :
+    color == 4'h8 ? 12'h888 :
+    color == 4'h9 ? 12'h00f :
+    color == 4'hA ? 12'h000 :
+    color == 4'hB ? 12'h0ff :
+    color == 4'hC ? 12'hff0 :
+    color == 4'hD ? 12'hf0f :
+    color == 4'hE ? 12'hf00 :
+                    12'hfff;
+
 always @(posedge CLOCK) begin
 
     // Кадровая развертка
@@ -50,29 +69,10 @@ always @(posedge CLOCK) begin
     begin
     
         // Область экрана
-        if (x >= 64 && x < 64 + 512 && y >= 8 && y < 8 + 384)
-        
-            case (color)
-                0:  {VGA_R, VGA_G, VGA_B} <= 12'h111;
-                1:  {VGA_R, VGA_G, VGA_B} <= 12'h008;
-                2:  {VGA_R, VGA_G, VGA_B} <= 12'h080;
-                3:  {VGA_R, VGA_G, VGA_B} <= 12'h088;
-                4:  {VGA_R, VGA_G, VGA_B} <= 12'h800;
-                5:  {VGA_R, VGA_G, VGA_B} <= 12'h808;
-                6:  {VGA_R, VGA_G, VGA_B} <= 12'h880;
-                7:  {VGA_R, VGA_G, VGA_B} <= 12'hccc;
-                8:  {VGA_R, VGA_G, VGA_B} <= 12'h888;
-                9:  {VGA_R, VGA_G, VGA_B} <= 12'h00f;
-                10: {VGA_R, VGA_G, VGA_B} <= 12'h0f0;
-                11: {VGA_R, VGA_G, VGA_B} <= 12'h0ff;
-                12: {VGA_R, VGA_G, VGA_B} <= 12'hf00;
-                13: {VGA_R, VGA_G, VGA_B} <= 12'hf0f;
-                14: {VGA_R, VGA_G, VGA_B} <= 12'hff0;
-                15: {VGA_R, VGA_G, VGA_B} <= 12'hfff;
-            endcase
-            
+        if (x >= 64 && x < 64 + 512 && y >= 8 && y < 8 + 384)        
+            {VGA_R, VGA_G, VGA_B} <= dstcolor;  // Бумага
         else
-            {VGA_R, VGA_G, VGA_B} <= border; // Бордер
+            {VGA_R, VGA_G, VGA_B} <= border;    // Бордер
          
     end
     else {VGA_R, VGA_G, VGA_B} <= 12'b0;
