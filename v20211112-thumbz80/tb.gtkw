@@ -1,20 +1,20 @@
 [*]
 [*] GTKWave Analyzer v3.3.66 (w)1999-2015 BSI
-[*] Sun Nov 14 19:39:15 2021
+[*] Mon Nov 15 05:12:25 2021
 [*]
-[dumpfile] "e:\dev\fpga\Thumbz80\tb.vcd"
-[dumpfile_mtime] "Sun Nov 14 19:39:02 2021"
-[dumpfile_size] 231380
-[savefile] "e:\dev\fpga\Thumbz80\tb.gtkw"
-[timestart] 7
-[size] 960 491
+[dumpfile] "e:\dev\fpga\z80\v20211112-thumbz80\tb.vcd"
+[dumpfile_mtime] "Mon Nov 15 05:10:47 2021"
+[dumpfile_size] 205852
+[savefile] "e:\dev\fpga\z80\v20211112-thumbz80\tb.gtkw"
+[timestart] 20
+[size] 960 440
 [pos] -1 -1
-*-5.000000 55 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+*-5.000000 97 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [treeopen] tb.
 [sst_width] 197
 [signals_width] 201
 [sst_expanded] 1
-[sst_vpaned_height] 115
+[sst_vpaned_height] 102
 @800200
 -Interface
 @28
@@ -27,16 +27,20 @@ tb.MicroprocessorUnit80.o_data[7:0]
 tb.MicroprocessorUnit80.we
 @1000200
 -Interface
-@800201
+@800200
 -EXEC
-@29
+@28
 tb.MicroprocessorUnit80.accept
+@22
+tb.MicroprocessorUnit80.pc[15:0]
+@28
 tb.MicroprocessorUnit80.loadedir[1:0]
-@23
+@22
 tb.MicroprocessorUnit80.phase[3:0]
 tb.MicroprocessorUnit80.ir[7:0]
-tb.MicroprocessorUnit80.currentir[7:0]
-@1000201
+@29
+tb.MicroprocessorUnit80.select
+@1000200
 -EXEC
 @800200
 -REGS

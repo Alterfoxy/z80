@@ -78,13 +78,21 @@ assign HEX5 = 7'b1111111;
 // Генерация частот
 wire locked;
 wire clock_25;
+wire clock_50;
 
 de0pll unit_pll
 (
     .clkin     (CLOCK_50),
     .m25       (clock_25),
+    .m50       (clock_50),
     .locked    (locked)
 );
+
+wire clock = clock_50;
+
+// -----------------------------------------------------------------------------
+// Видеоадаптер
+// -----------------------------------------------------------------------------
 
 adapter DSUBAdapter
 (
@@ -93,7 +101,50 @@ adapter DSUBAdapter
     .VGA_G  (VGA_G),
     .VGA_B  (VGA_B),
     .VGA_HS (VGA_HS),
-    .VGA_VS (VGA_VS)
+    .VGA_VS (VGA_VS),
+    .vaddr  (video_request),
+    .vdata  (video_response),
+    .border (12'h777)
+);
+
+// -----------------------------------------------------------------------------
+// Общая память 64Кб, как и положено машине с 16-битным адресом десу
+// -----------------------------------------------------------------------------
+
+wire [15:0] address;
+wire [ 7:0] i_data;
+wire [ 7:0] o_data;
+wire        we;
+wire [15:0] video_request;
+wire [ 7:0] video_response;
+
+zram UnitZram
+(
+    .clock      (clock),
+    .address_a  (address),
+    .address_b  (video_request),
+    .q_a        (i_data),
+    .q_b        (video_response),
+    .data_a     (o_data),
+    .wren_a     (we)
+);
+
+// -----------------------------------------------------------------------------
+// Подключение процессора
+// -----------------------------------------------------------------------------
+
+tz80 MicroprocessorUnit80 
+(
+    .clock      (clock),
+    .resetn     (locked),
+    .locked     (locked),
+    .address    (address),
+    .i_data     (i_data),
+    .o_data     (o_data),
+    .we         (we)
 );
 
 endmodule
+
+`include "../adapter.v"
+`include "../tz80.v"
