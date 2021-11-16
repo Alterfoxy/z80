@@ -1,15 +1,15 @@
 [*]
 [*] GTKWave Analyzer v3.3.66 (w)1999-2015 BSI
-[*] Tue Nov 16 06:33:01 2021
+[*] Tue Nov 16 17:40:47 2021
 [*]
 [dumpfile] "e:\dev\z80\v20211112-thumbz80\tb.vcd"
-[dumpfile_mtime] "Tue Nov 16 06:32:17 2021"
-[dumpfile_size] 97444
+[dumpfile_mtime] "Tue Nov 16 17:40:26 2021"
+[dumpfile_size] 197931
 [savefile] "e:\dev\z80\v20211112-thumbz80\tb.gtkw"
 [timestart] 0
 [size] 960 440
 [pos] -1 -1
-*-5.000000 10 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+*-5.000000 30 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [treeopen] tb.
 [sst_width] 197
 [signals_width] 201
@@ -34,9 +34,7 @@ tb.MicroprocessorUnit80.we
 tb.MicroprocessorUnit80.select
 @22
 tb.MicroprocessorUnit80.pc[15:0]
-@23
 tb.MicroprocessorUnit80.opcode[7:0]
-@22
 tb.MicroprocessorUnit80.phase[3:0]
 @1000200
 -EXEC
@@ -73,5 +71,17 @@ tb.MicroprocessorUnit80.de_prime[15:0]
 tb.MicroprocessorUnit80.hl_prime[15:0]
 @1000200
 -REGS
+@800200
+-ALU
+@22
+tb.MicroprocessorUnit80.alu_m[4:0]
+tb.MicroprocessorUnit80.op1[7:0]
+tb.MicroprocessorUnit80.op2[7:0]
+@23
+tb.MicroprocessorUnit80.alu_r[8:0]
+@22
+tb.MicroprocessorUnit80.alu_f[7:0]
+@1000200
+-ALU
 [pattern_trace] 1
 [pattern_trace] 0

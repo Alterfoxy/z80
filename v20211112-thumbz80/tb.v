@@ -14,8 +14,9 @@ initial begin $dumpfile("tb.vcd"); $dumpvars(0, tb); end
 initial begin $readmemh("tb.hex", memdata, 0); end
 // -----------------------------------------------------------------------------
 reg  [ 7:0] memdata[65536];
+reg  [15:0] address_ctrl;
 wire [15:0] address;
-reg  [ 7:0] i_data;
+wire [ 7:0] i_data = memdata[ address_ctrl ];
 wire [ 7:0] o_data;
 wire        we;
 // ---------------------------------------------------------------------
@@ -23,8 +24,8 @@ wire        we;
 // Контроллер блочной памяти
 always @(negedge clock) begin
 
-    i_data <= memdata[ address ];
     if (we) memdata[ address ] <= o_data;
+    address_ctrl <= address;
 
 end
 // ---------------------------------------------------------------------
