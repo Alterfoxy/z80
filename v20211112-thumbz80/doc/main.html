@@ -28,77 +28,77 @@ table td.px { background: #cff; }
     <tr>
         <th>0</th>
         <td><b>nop</b></td>
-        <td><b>ld</b> bc,**</td>
-        <td><b>ld</b> (bc),a</td>
-        <td><b>inc</b> bc</td>
+        <td class="ok"><b>ld</b> bc,**</td>
+        <td class="ok"><b>ld</b> (bc),a</td>
+        <td class="ok"><b>inc</b> bc</td>
         <td><b>inc</b> b</td>
         <td><b>dec</b> b</td>
-        <td><b>ld</b> b,*</td>
+        <td class="ok"><b>ld</b> b,*</td>
         <td><b>rlca</b></td>
-        <td><b>ex</b> af,af'</td>
+        <td class="ok"><b>ex</b> af,af'</td>
         <td><b>add</b> hl, bc</td>
         <td><b>ld</b> a,(bc)</td>
-        <td><b>dec</b> bc</td>
+        <td class="ok"><b>dec</b> bc</td>
         <td><b>inc</b> c</td>
         <td><b>dec</b> c</td>
-        <td><b>ld</b> c,*</td>
+        <td class="ok"><b>ld</b> c,*</td>
         <td><b>rrca</b></td>
     </tr>
     <tr>
         <th>1</th>
         <td><b>djnz</b> *</td>
-        <td><b>ld</b> de,**</td>
-        <td><b>ld</b> (de),a</td>
-        <td><b>inc</b> de</td>
+        <td class="ok"><b>ld</b> de,**</td>
+        <td class="ok"><b>ld</b> (de),a</td>
+        <td class="ok"><b>inc</b> de</td>
         <td><b>inc</b> d</td>
         <td><b>dec</b> d</td>
-        <td><b>ld</b> d,*</td>
+        <td class="ok"><b>ld</b> d,*</td>
         <td><b>rla</b></td>
         <td><b>jr</b> *</td>
         <td><b>add</b> hl, de</td>
         <td><b>ld</b> a,(de)</td>
-        <td><b>dec</b> de</td>
+        <td class="ok"><b>dec</b> de</td>
         <td><b>inc</b> e</td>
         <td><b>dec</b> e</td>
-        <td><b>ld</b> e,*</td>
+        <td class="ok"><b>ld</b> e,*</td>
         <td><b>rra</b></td>
     </tr>
     <tr>
         <th>2</th>
         <td><b>jr</b> nz,*</td>
-        <td><b>ld</b> hl,**</td>
+        <td class="ok"><b>ld</b> hl,**</td>
         <td><b>ld</b> (**),hl</td>
-        <td><b>inc</b> hl</td>
+        <td class="ok"><b>inc</b> hl</td>
         <td><b>inc</b> h</td>
         <td><b>dec</b> h</td>
-        <td><b>ld</b> h,*</td>
+        <td class="ok"><b>ld</b> h,*</td>
         <td><b>daa</b></td>
         <td><b>jr</b> z,*</td>
         <td><b>add</b> hl, hl</td>
         <td><b>ld</b> hl,(**)</td>
-        <td><b>dec</b> hl</td>
+        <td class="ok"><b>dec</b> hl</td>
         <td><b>inc</b> l</td>
         <td><b>dec</b> l</td>
-        <td><b>ld</b> l,*</td>
+        <td class="ok"><b>ld</b> l,*</td>
         <td><b>cpl</b></td>
     </tr>
     <tr>
         <th>3</th>
         <td><b>jr</b> nc,*</td>
-        <td><b>ld</b> sp,**</td>
+        <td class="ok"><b>ld</b> sp,**</td>
         <td><b>ld</b> (**),a</td>
-        <td><b>inc</b> sp</td>
+        <td class="ok"><b>inc</b> sp</td>
         <td><b>inc</b> (hl)</td>
         <td><b>dec</b> (hl)</td>
-        <td><b>ld</b> (hl),*</td>
+        <td class="ok"><b>ld</b> (hl),*</td>
         <td><b>scf</b></td>
         <td><b>jr</b> c,*</td>
         <td><b>add</b> hl, sp</td>
         <td><b>ld</b> a,(**)</td>
-        <td><b>dec</b> sp</td>
+        <td class="ok"><b>dec</b> sp</td>
         <td><b>inc</b> a</td>
         <td><b>dec</b> a</td>
-        <td><b>ld</b> a,*</td>
+        <td class="ok"><b>ld</b> a,*</td>
         <td><b>ccf</b></td>
     </tr>
     <tr>
