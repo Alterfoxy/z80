@@ -1,15 +1,15 @@
 [*]
 [*] GTKWave Analyzer v3.3.66 (w)1999-2015 BSI
-[*] Mon Nov 15 06:09:37 2021
+[*] Tue Nov 16 06:33:01 2021
 [*]
-[dumpfile] "e:\dev\fpga\z80\v20211112-thumbz80\tb.vcd"
-[dumpfile_mtime] "Mon Nov 15 05:10:47 2021"
-[dumpfile_size] 205852
-[savefile] "e:\dev\fpga\z80\v20211112-thumbz80\tb.gtkw"
-[timestart] 20
+[dumpfile] "e:\dev\z80\v20211112-thumbz80\tb.vcd"
+[dumpfile_mtime] "Tue Nov 16 06:32:17 2021"
+[dumpfile_size] 97444
+[savefile] "e:\dev\z80\v20211112-thumbz80\tb.gtkw"
+[timestart] 0
 [size] 960 440
 [pos] -1 -1
-*-5.000000 97 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+*-5.000000 10 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [treeopen] tb.
 [sst_width] 197
 [signals_width] 201
@@ -18,7 +18,8 @@
 @800200
 -Interface
 @28
-tb.MicroprocessorUnit80.clock
+tb.clock
+tb.clock_50
 @22
 tb.MicroprocessorUnit80.address[15:0]
 tb.MicroprocessorUnit80.i_data[7:0]
@@ -30,22 +31,39 @@ tb.MicroprocessorUnit80.we
 @800200
 -EXEC
 @28
-tb.MicroprocessorUnit80.accept
+tb.MicroprocessorUnit80.select
 @22
 tb.MicroprocessorUnit80.pc[15:0]
-@28
-tb.MicroprocessorUnit80.loadedir[1:0]
+@23
+tb.MicroprocessorUnit80.opcode[7:0]
 @22
 tb.MicroprocessorUnit80.phase[3:0]
-tb.MicroprocessorUnit80.ir[7:0]
-@29
-tb.MicroprocessorUnit80.select
 @1000200
 -EXEC
 @800200
 -REGS
-@22
+@c00022
 tb.MicroprocessorUnit80.af[15:0]
+@28
+(0)tb.MicroprocessorUnit80.af[15:0]
+(1)tb.MicroprocessorUnit80.af[15:0]
+(2)tb.MicroprocessorUnit80.af[15:0]
+(3)tb.MicroprocessorUnit80.af[15:0]
+(4)tb.MicroprocessorUnit80.af[15:0]
+(5)tb.MicroprocessorUnit80.af[15:0]
+(6)tb.MicroprocessorUnit80.af[15:0]
+(7)tb.MicroprocessorUnit80.af[15:0]
+(8)tb.MicroprocessorUnit80.af[15:0]
+(9)tb.MicroprocessorUnit80.af[15:0]
+(10)tb.MicroprocessorUnit80.af[15:0]
+(11)tb.MicroprocessorUnit80.af[15:0]
+(12)tb.MicroprocessorUnit80.af[15:0]
+(13)tb.MicroprocessorUnit80.af[15:0]
+(14)tb.MicroprocessorUnit80.af[15:0]
+(15)tb.MicroprocessorUnit80.af[15:0]
+@1401200
+-group_end
+@22
 tb.MicroprocessorUnit80.bc[15:0]
 tb.MicroprocessorUnit80.de[15:0]
 tb.MicroprocessorUnit80.hl[15:0]

@@ -79,16 +79,16 @@ assign HEX5 = 7'b1111111;
 wire locked;
 wire clock_25;
 wire clock_50;
+wire clock_100;
 
 de0pll unit_pll
 (
     .clkin     (CLOCK_50),
     .m25       (clock_25),
     .m50       (clock_50),
+    .m100      (clock_100),
     .locked    (locked)
 );
-
-wire clock = clock_50;
 
 // -----------------------------------------------------------------------------
 // Видеоадаптер
@@ -120,7 +120,7 @@ wire [ 7:0] video_response;
 
 zram UnitZram
 (
-    .clock      (clock),
+    .clock      (~clock_100),
     .address_a  (address),
     .address_b  (video_request),
     .q_a        (i_data),
@@ -135,7 +135,7 @@ zram UnitZram
 
 tz80 MicroprocessorUnit80 
 (
-    .clock      (clock & 0),
+    .clock      (clock_50),
     .resetn     (locked),
     .locked     (locked),
     .address    (address),
